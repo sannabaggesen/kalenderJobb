@@ -1,0 +1,199 @@
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --surface-muted: #f8f9fc;
+  --border: #d9deea;
+  --text: #1b2238;
+  --text-muted: #5b647d;
+  --accent: #3366ff;
+  --accent-soft: #eaf0ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 1rem;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sidebar-header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.user-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.user-item {
+  width: 100%;
+  text-align: left;
+  padding: 0.55rem 0.65rem;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.user-item.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.top-bar {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.calendar-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tab {
+  border: 1px solid var(--border);
+  background: var(--surface-muted);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.tab.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.calendar-meta {
+  padding: 0.9rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.93rem;
+}
+
+.calendar-container {
+  padding: 0 1rem 1rem;
+  flex: 1;
+}
+
+.week-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(7, minmax(130px, 1fr));
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: auto;
+  background: var(--surface);
+  max-height: calc(100vh - 180px);
+}
+
+.cell {
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.45rem;
+  min-height: 42px;
+  font-size: 0.82rem;
+}
+
+.cell.header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--surface-muted);
+  font-weight: 600;
+}
+
+.cell.time {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.cell.empty {
+  background: var(--surface-muted);
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .week-grid {
+    max-height: 70vh;
+  }
+}

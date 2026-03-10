@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar Tool</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h1>Users</h1>
+          <button id="addUserBtn" class="btn">+ Add User</button>
+        </div>
+        <ul id="userList" class="user-list" aria-label="User list"></ul>
+      </aside>
+
+      <main class="main-content">
+        <header class="top-bar">
+          <div id="calendarTabs" class="calendar-tabs" role="tablist" aria-label="Calendars"></div>
+          <button id="addCalendarBtn" class="btn" disabled>+ Add Calendar</button>
+        </header>
+
+        <section id="calendarMeta" class="calendar-meta" aria-live="polite"></section>
+
+        <section class="calendar-container">
+          <div id="weekGrid" class="week-grid" aria-label="Weekly calendar"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
